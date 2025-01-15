@@ -1,0 +1,10 @@
+{
+  "prefix": "test007",
+  "environment": "dev",
+  "region": "us-central1",
+  "location_bucket": "us",
+  "storage_class": "STANDARD",
+  "project": "xenon-momentum-441407-q9",
+  "entry_point": "hello_get",
+  "ip_cidr_range": "10.0.0.0/16"
+}
