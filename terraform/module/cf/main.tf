@@ -24,7 +24,6 @@ resource "google_cloudfunctions_function" "cf" {
 }
 # IAM entry for all users to invoke the function
 resource "google_cloudfunctions_function_iam_member" "allow_public_access" {
-  region         = var.region
   cloud_function = var.cf_name
   role           = "roles/cloudfunctions.invoker"
   member         = var.member

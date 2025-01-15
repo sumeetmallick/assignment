@@ -17,7 +17,6 @@ module "cf" {
   display_name  = "${var.prefix}-sa"
   output_path   = "${var.environment}-${var.prefix}.zip"
   connector     = "${var.environment}-${var.prefix}-connector"
-  region        = var.region
   member         = var.member  
   depends_on    = [module.vpc]
 }

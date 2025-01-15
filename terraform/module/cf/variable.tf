@@ -49,11 +49,6 @@ variable "output_path" {
 variable "connector" {
   type        = string
 }
-
-variable "region" {
-  type = string
-}
-
 variable "member" {
   type        = string
 }
