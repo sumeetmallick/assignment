@@ -27,6 +27,8 @@ resource "google_cloudfunctions_function_iam_member" "allow_public_access" {
   cloud_function = var.cf_name
   role           = "roles/cloudfunctions.invoker"
   member         = var.member
+  depends_on      = [google_cloudfunctions_function.cf]  
+  
 }
 
 #creation of storage bucket 

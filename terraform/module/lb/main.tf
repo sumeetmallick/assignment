@@ -13,6 +13,10 @@ resource "google_compute_backend_service" "global_backend" {
   port_name                       = "http"
   protocol                        = "HTTP"
   compression_mode                = "DISABLED"
+  
+  outlier_detection {
+    consecutive_errors = 5
+  }
   backend {
     balancing_mode  = "UTILIZATION"
     capacity_scaler = 1
