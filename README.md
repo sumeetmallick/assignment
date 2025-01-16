@@ -6,7 +6,7 @@ This Terraform project demonstrates the deployment of a simple "Hello World" Goo
 1. Google Cloud Platform (GCP) Account
 
 2. Required GCP APIs:
-   Enable the following APIs in your GCP project:
+   - Enable the following APIs in your GCP project:
       * Cloud Functions API
       * Compute Engine API
       * IAM API
@@ -14,23 +14,33 @@ This Terraform project demonstrates the deployment of a simple "Hello World" Goo
 
 3. Create a bucket in GCP (will be used to store the terraform state file)
 
+4. Recommended software versions need to be installed
+   * terraform - 6.10.0
+   * python - 3.11
+   * go -1.23.4
+
+
+
 # Terraform Project structure
-Modules
-1. Cloud Function Module:
-   * Deploys the Cloud Function, bucket, archives the code, and creates a service account.
-   * The code present in the scripts directory is archived, uploaded to a GCS bucket, and deployed directly to the Cloud Function using the GCS bucket.
+1. Modules
+   - Cloud Function Module:
+      * Deploys the Cloud Function, bucket, archives the code, and creates a service account.
+      * The code present in the scripts directory is archived, uploaded to a GCS bucket, and deployed directly to the Cloud Function using the GCS bucket.
 
-2. Load Balancer Module:
-   * Configures an HTTP Load Balancer with Serverless Network Endpoint Group (NEG).
+   - Load Balancer Module:
+      * Configures an HTTP Load Balancer with Serverless Network Endpoint Group (NEG).
 
-3. VPC Module:
-   * Sets up a VPC network, a subnet, and a VPC Serverless Connector.
+   - VPC Module:
+      * Sets up a VPC network, a subnet, and a VPC Serverless Connector.
 
-Envs
-* The envs folder contains the environment specific json file 
+2. Envs
+   * The envs folder contains the environment specific json file 
 
-Scripts
-* Scripts folder contains the hello world code that gets deployed on the cloud function
+3. Scripts
+   * Scripts folder contains the hello world code that gets deployed on the cloud function
+
+4. Terratest
+   * Contains automated testing script for infrastructure
 
 
 
@@ -40,6 +50,7 @@ Scripts
 2. Open cloud shell
 
 3. Clone the terraform repository in cloud shell.
+
    - git clone https://github.com/sumeetmallick/assignment.git
 
 4. cd assignment/terraform
@@ -69,10 +80,14 @@ Scripts
    - After successful deployment, in GCP go to Network Services → Load Balancer
    - Copy the load balancer IP and open in a browser
 
-Steps to run Terratest:
-
-
 # How to Destroy the Infrastructure
 
 1. To clean up resources:
    - terraform destroy -auto-approve -var-file=envs/dev.json 
+
+
+# Steps to run Terratest:
+To run the terratest test case perform the below steps
+   - Cd terratest
+   - go test -v terratest_case_test.go -timeout 30m
+  
