@@ -22,6 +22,7 @@ resource "google_cloudfunctions_function" "cf" {
   min_instances                 = 1  
   max_instances                 = 10  
 }
+
 # IAM entry for all users to invoke the function
 resource "google_cloudfunctions_function_iam_member" "allow_public_access" {
   cloud_function = var.cf_name
